@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Decode Path of Exile Trade URL Identifier</title>
+</head>
+<body>
+    <h1>Decode Path of Exile Trade URL Identifier</h1>
+    <textarea id="identifier" placeholder="Paste the identifier here"></textarea><br>
+    <button onclick="decodeIdentifier()">Decode</button><br>
+    <div id="decodedOutput"></div>
+
+    <script>
+        function decodeIdentifier() {
+            try {
+                var identifier = document.getElementById("identifier").value.trim();
+                var decodedData = atob(identifier.replace(/-/g, '+').replace(/_/g, '/'));
+                document.getElementById("decodedOutput").innerHTML = "<pre>" + decodedData + "</pre>";
+            } catch (error) {
+                console.error("Error while decoding identifier:", error);
+                document.getElementById("decodedOutput").innerHTML = "<p>Error: " + error.message + "</p>";
+            }
+        }
+    </script>
+</body>
+</html>
