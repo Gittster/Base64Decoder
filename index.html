@@ -14,7 +14,14 @@
         function decodeIdentifier() {
             try {
                 var identifier = document.getElementById("identifier").value.trim();
-                var decodedData = atob(identifier.replace(/-/g, '+').replace(/_/g, '/'));
+                identifier = identifier.replace(/-/g, '+').replace(/_/g, '/');
+
+                // Add padding if necessary
+                while (identifier.length % 4 !== 0) {
+                    identifier += '=';
+                }
+
+                var decodedData = atob(identifier);
                 document.getElementById("decodedOutput").innerHTML = "<pre>" + decodedData + "</pre>";
             } catch (error) {
                 console.error("Error while decoding identifier:", error);
